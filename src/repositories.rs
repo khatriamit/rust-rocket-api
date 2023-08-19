@@ -24,7 +24,11 @@ impl RustaceanRepository {
             .get_result(conn)
     }
 
-    pub fn save(conn: &mut PgConnection, id: i32, rustacean: Rustacean) -> QueryResult<Rustacean> {
+    pub fn save(
+        conn: &mut PgConnection,
+        id: i32,
+        rustacean: NewRustacean,
+    ) -> QueryResult<Rustacean> {
         diesel::update(rustaceans::table.find(id))
             .set((
                 rustaceans::email.eq(rustacean.email.to_owned()),

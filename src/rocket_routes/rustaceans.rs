@@ -47,7 +47,7 @@ pub async fn create_rustaceans(
 pub async fn update_rustaceans(
     db: DbConn,
     id: i32,
-    rustacean: Json<Rustacean>,
+    rustacean: Json<NewRustacean>,
 ) -> Result<Value, Custom<Value>> {
     db.run(move |conn| {
         RustaceanRepository::save(conn, id, rustacean.into_inner())
